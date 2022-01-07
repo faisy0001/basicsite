@@ -1,16 +1,30 @@
-clone repo with git clone and make migrations by typing in terminal,
+# Django basicsite Project
 
-python3 manage.py makemigrations
+## Getting Started with Project setup
 
-and then migrate,
 
+
+```bash
+# Create a virual environment. 
+# Go to following link if you do not know how to do it 
+# <script src="https://gist.github.com/simonw/4835a22c79a8d3c29dd155c716b19e16.js"></script>
+
+
+
+
+# Clone repo with git clone:
+
+git clone https://github.com/faisy0001/basicsite.git
+
+# Open repo
+cd basicsite/
+
+# install requirements
+pip3 install -r requirements.txt
+
+# apply migrations
 python3 manage.py migrate
 
-after successful migration, runserver,
-
+# run development server
 python3 manage.py runserver
-
-
-NOTE:
-    python3 and django 4.0 shall be installed for getting started.
-
+```
