@@ -1,13 +1,14 @@
 {%extends "base.html" %} {%block content%}
 
-<form method="post">{% csrf_token %}
-
-
-
+<form method="post">{% csrf_token %} {%if not user.is_authenticated %}
+    <p>
+        <h3>LOGIN REQUIRED!</h3> <a href="{%url 'login'%}">Login Here</a></p>
+    {%endif%} {%if user.is_authenticated %}
     <p>Are you sure you want to delete "{{ object }}"?</p>
 
 
 
-    <input type="submit" value="Confirm">
+
+    <input type="submit" value="Confirm"> {%endif%}
 </form>
 {%endblock%}

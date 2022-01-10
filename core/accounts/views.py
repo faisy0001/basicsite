@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import login, authenticate
 from django.views.generic.edit import FormView, UpdateView , DeleteView
-from .forms import SignUpForm
+from core.accounts.forms import SignUpForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Profile
@@ -15,24 +15,17 @@ class DeleteUser(DeleteView):
     # specify the model you want to use
     model = User
     template_name = 'signup/delete.html'
-    success_url ="/signup/home"
+    success_url ="accounts/login"
     def get_object(self, queryset=None):
         return self.request.user
 
 class updateprofile(UpdateView):
     model = User
     template_name = 'signup/update.html'
-    fields = ['username' , 'email' , 'password']
+    fields = ['username' , 'email' ]
     def get_object( self, queryset=None):
         return self.request.user
-    success_url =  '/signup/home'
-    def dispatch(self, request, *args, **kwargs):
-        user = self.request.user
-        if user.is_anonymous:
-            return redirect_to_login(request.get_full_path())
-        return super(updateprofile, self).dispatch(
-            request, *args, **kwargs)
-        
+    success_url =  '/accounts/home'
 
 
 class signup_view(FormView):
@@ -40,8 +33,7 @@ class signup_view(FormView):
     form_class = SignUpForm
   
     def get(self , request):
-        message = 'hey'
-        return render(request , self.template_name , {'form' : self.form_class , 'message' : message} )
+        return render(request , self.template_name , {'form' : self.form_class} )
     
     def post(self , request):
         form = self.form_class(request.POST)

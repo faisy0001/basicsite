@@ -12,14 +12,20 @@
             {% endfor %}
         </ul>
         {% endif %} {%if not user.is_authenticated%}
-        <a href="{%url 'login'%}">  login </a>
-        <p>or</p>
-        <a href="{%url 'signup'%}"> sign up</a> {%endif%}
+        <h3>
+            <a href="{%url 'login'%}">  login </a>
+            <p>or</p>
+            <a href="{%url 'signup'%}"> sign up</a>
+        </h3>{%endif%}
 
     </div>
     {% if user.is_authenticated %}
     <h1>CONGRATULATIONS! YOU ARE LOGGED IN</h1>
-    <a href="{%url 'logout' %}">logout here</a><br>
-    <a href="{%url 'update' %}">update profile here</a><br>
-    <a href="{%url 'delete' %}">delete profile here</a> {% endif %} {%endblock%}
+    <h4>
+        <a href="{%url 'logout' %}">logout here</a><br>
+        <a href="{%url 'update' %}">update profile here</a><br>
+        <a href="{%url 'delete' %}">delete profile here</a><br>
+        <a href="{%url 'signup'%}">create another account</a><br>
+        <a href="{%url 'change_password'%}">change password here</a>
+    </h4>{% endif %} {%endblock%}
 </body>

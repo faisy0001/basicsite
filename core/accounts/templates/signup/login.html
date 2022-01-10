@@ -1,7 +1,11 @@
 {%extends 'base.html' %} {% block content %}
 <form method="post">
-    {{ form.as_p }} {% csrf_token %}
-    <button type="submit">Submit</button>
+    {%if user.is_authenticated%}
+    <h3>you are already logged in</h3>
+    {%endif%} {%if not user.is_authenticated%} {{ form.as_p }} {% csrf_token %}
+    <button type="submit">Submit</button> {%endif%}
 </form>
+{%if not user.is_authenticated%}
 <p>Not a member? <a href="{% url 'signup' %}">Sign up now!</a></p>
-{% endblock content %}
+<p>forgot password? <a href="{%url 'password_reset'%}">click here</a></p>
+{%endif%} {% endblock content %}
