@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import login, authenticate
-from django.views.generic.edit import FormView, UpdateView , DeleteView
+from django.views.generic.edit import FormView, UpdateView , DeleteView 
 from core.accounts.forms import SignUpForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -25,7 +25,7 @@ class updateprofile(UpdateView):
     fields = ['username' , 'email' ]
     def get_object( self, queryset=None):
         return self.request.user
-    success_url =  '/accounts/home'
+    success_url =  '/accounts'
 
 
 class signup_view(FormView):

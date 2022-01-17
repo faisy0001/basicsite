@@ -3,28 +3,47 @@
 ## Getting Started with Project setup
 
 
-
+### Creating Virtual Environment:
 ```bash
 # Create a virual environment. 
 # Go to following link if you do not know how to do it 
 # <script src="https://gist.github.com/simonw/4835a22c79a8d3c29dd155c716b19e16.js"></script>
+```
+### One Liner Script:
+```bash
 
+source <(curl -s https://github.com/faisy0001/basicsite.git/master/install.sh)
 
+# Now,go to http://localhost:8000/accounts ,you will see a login\signup page.
 
+```
 
-# Clone repo with git clone:
+## Useful make commands:
+```bash
+# start services
+make up
 
-git clone https://github.com/faisy0001/basicsite.git
+# start services in detached mode
+make up-d
 
-# Open repo
-cd basicsite/
+# restart the service containers
+make restart
 
-# install requirements
-pip3 install -r requirements.txt
+# see web logs 
+make logs
+
+# attach to python shell
+make shell
+
+# generate migrations
+make migrations
 
 # apply migrations
-python3 manage.py migrate
+make migrate
 
-# run development server
-python3 manage.py runserver
+# stop services
+make stop
+
+# remove service containers
+make down
 ```

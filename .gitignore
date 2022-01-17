@@ -1,2 +1,6 @@
 */__pycache__/*
 *.sqlite3
+*/password-reset/*
+.env
+superuservariable.env
+env/
