@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile
     command: >
-        sh -c "python manage.py migrate &&
+        sh -c "python manage.py migrate --noinputs &&
                python manage.py migrate accounts --run-syncdb && 
                python manage.py runserver 0.0.0.0:8000 "
     volumes:
