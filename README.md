@@ -12,7 +12,7 @@
 ### One Liner Script:
 ```bash
 
-curl https://github.com/faisy0001/basicsite/install.sh | sudo bash
+curl https://raw.githubusercontent.com/faisy0001/basicsite/master/install.sh | bash
 
 # Now,go to http://localhost:8000/accounts ,you will see a login\signup page.
 
