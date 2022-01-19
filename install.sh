@@ -1,3 +1,3 @@
 git clone https://github.com/faisy0001/basicsite.git
-cd /basicsite
+cd basicsite
 make up
