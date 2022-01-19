@@ -2,7 +2,7 @@
 *.sqlite3
 */password-reset/*
 .env
-superuservariable.env
+superuservariables.env
 env/
 */scripts/*
 */data/*
