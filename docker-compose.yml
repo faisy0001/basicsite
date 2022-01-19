@@ -1,9 +1,14 @@
 version: '3.9'
 services:
   db:
-    image: python:3.9
+    image: postgres
     volumes:
-     - ./db.sqlite3:/basicsite/sqlite3.db
+    - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_NAME=db
     restart: unless-stopped
   
   
@@ -14,12 +19,18 @@ services:
       context: .
       dockerfile: Dockerfile
     command: >
-      sh -c "python3 manage.py migrate --run-syncdb &&
-             python3 manage.py runserver 0.0.0.0:8000"
+        sh -c "python manage.py migrate accounts --run-syncdb && 
+               python manage.py runserver 0.0.0.0:8000 "
     volumes:
       - .:/basicsite
     ports:
       - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_HOST_NAME=db
     depends_on:
       - db
     container_name: basicsite.web

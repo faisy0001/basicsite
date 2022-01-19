@@ -4,3 +4,5 @@
 .env
 superuservariable.env
 env/
+*/scripts/*
+*/data/*
