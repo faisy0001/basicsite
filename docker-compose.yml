@@ -19,7 +19,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: >
-        sh -c "python manage.py migrate accounts --run-syncdb && 
+        sh -c "python manage.py migrate &&
+               python manage.py migrate accounts --run-syncdb && 
                python manage.py runserver 0.0.0.0:8000 "
     volumes:
       - .:/basicsite
