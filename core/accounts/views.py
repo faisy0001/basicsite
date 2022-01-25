@@ -15,7 +15,7 @@ class DeleteUser(DeleteView):
     # specify the model you want to use
     model = User
     template_name = 'signup/delete.html'
-    success_url ="accounts/login"
+    success_url ="/accounts"
     def get_object(self, queryset=None):
         return self.request.user
 

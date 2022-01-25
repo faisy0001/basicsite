@@ -18,10 +18,10 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    command: >
-        sh -c "python manage.py migrate --noinput &&
-               python manage.py migrate accounts --run-syncdb && 
-               python manage.py runserver 0.0.0.0:8000 "
+    stdin_open: true
+    tty: true
+    command: /bin/sh -c "sh scripts/entrypoint.sh "
+   
     volumes:
       - .:/basicsite
     ports:
@@ -32,6 +32,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_HOST_NAME=db
+      - DJANGO_SUPERUSER_PASSWORD=faisy
     depends_on:
       - db
-    container_name: basicsite.web
+    # container_name: basicsite.web

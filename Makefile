@@ -14,8 +14,8 @@ migration:
 		docker-compose exec web /bin/bash -c "sudo python manage.py makemigrations"
 migrate:
 		docker exec -it web /bin/bash python manage.py migrate
-super_user:
-		docker-compose exec web /bin/bash -c "sudo python manage.py createsuperuser --noinput "
+superuser:
+		sudo docker-compose run web python manage.py createsuperuser
 
 
 
